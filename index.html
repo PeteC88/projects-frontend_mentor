@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!-- displays site properly based on user's device -->
+
+  <link rel="icon" type="image/png" sizes="32x32" href="./images/favicon-32x32.png">
+
+  <title>Frontend Mentor | E-commerce product page</title>
+  <link rel="stylesheet" href="style/style.css">
+  <script src="js/index.js" defer></script>
+
+  <!-- Feel free to remove these styles or customise in your own stylesheet 👍 -->
+  <!-- Project Pietro Ciccarello -->
+</head>
+
+<body>
+  <nav class="menu">
+    <div class="menu__btn">
+      <div class="menu__burger"></div>
+    </div>
+    <div class="menu__logo">sneakers</div>
+    <div class="menu__hider"></div>
+    <div class="menu__slider">
+      <ul class="menu__links">
+        <li class="menu__link"><a href="#">Collections</a></li>
+        <li class="menu__link"><a href="#">Men</a></li>
+        <li class="menu__link"><a href="#">Women</a></li>
+        <li class="menu__link"><a href="#">About</a></li>
+        <li class="menu__link"><a href="#">Contact</a></li>
+      </ul>
+    </div>
+    <div class="menu__shopping">
+      <div class="menu__cart"><svg width="22" height="20" xmlns="http://www.w3.org/2000/svg">
+          <path
+            d="M20.925 3.641H3.863L3.61.816A.896.896 0 0 0 2.717 0H.897a.896.896 0 1 0 0 1.792h1l1.031 11.483c.073.828.52 1.726 1.291 2.336C2.83 17.385 4.099 20 6.359 20c1.875 0 3.197-1.87 2.554-3.642h4.905c-.642 1.77.677 3.642 2.555 3.642a2.72 2.72 0 0 0 2.717-2.717 2.72 2.72 0 0 0-2.717-2.717H6.365c-.681 0-1.274-.41-1.53-1.009l14.321-.842a.896.896 0 0 0 .817-.677l1.821-7.283a.897.897 0 0 0-.87-1.114ZM6.358 18.208a.926.926 0 0 1 0-1.85.926.926 0 0 1 0 1.85Zm10.015 0a.926.926 0 0 1 0-1.85.926.926 0 0 1 0 1.85Zm2.021-7.243-13.8.81-.57-6.341h15.753l-1.383 5.53Z"
+            fill="#000" fill-rule="nonzero" /></svg>
+        <div class="menu__cart-total">0</div>
+      </div>
+      <div class="menu__thumbnail"><img src="images/image-avatar.png"></div>
+    </div>
+    <div class="cart">
+      <div class="cart__container">
+        <div class="cart__title">Cart</div>
+        <div class="cart__empty">
+          <p>Your cart is empty.</p>
+        </div>
+        <div class="cart__content">
+          <img class="cart__img" src="images/image-product-1-thumbnail.jpg">
+          <div class="cart__subcontent">
+            <p class="cart__subcontent">Autumn Limited Edition...</p>
+            <p class="cart__total"></p>
+          </div>
+          <svg class="cart__delete" width="14" height="16" xmlns="http://www.w3.org/2000/svg"
+            xmlns:xlink="http://www.w3.org/1999/xlink">
+            <defs>
+              <path
+                d="M0 2.625V1.75C0 1.334.334 1 .75 1h3.5l.294-.584A.741.741 0 0 1 5.213 0h3.571a.75.75 0 0 1 .672.416L9.75 1h3.5c.416 0 .75.334.75.75v.875a.376.376 0 0 1-.375.375H.375A.376.376 0 0 1 0 2.625Zm13 1.75V14.5a1.5 1.5 0 0 1-1.5 1.5h-9A1.5 1.5 0 0 1 1 14.5V4.375C1 4.169 1.169 4 1.375 4h11.25c.206 0 .375.169.375.375ZM4.5 6.5c0-.275-.225-.5-.5-.5s-.5.225-.5.5v7c0 .275.225.5.5.5s.5-.225.5-.5v-7Zm3 0c0-.275-.225-.5-.5-.5s-.5.225-.5.5v7c0 .275.225.5.5.5s.5-.225.5-.5v-7Zm3 0c0-.275-.225-.5-.5-.5s-.5.225-.5.5v7c0 .275.225.5.5.5s.5-.225.5-.5v-7Z"
+                id="a" />
+            </defs>
+            <use fill="#C3CAD9" fill-rule="nonzero" xlink:href="#a" />
+          </svg>
+        </div>
+        <button class="btn cart__btn">Checkout</button>
+      </div>
+    </div>
+  </nav>
+  <main>
+    <div class="main-content">
+      <div class="carousel__lightbox-container">
+        <div class="carousel__lightbox">
+          <div class="carousel__close">X</div>
+          <div class="carousel__slider">
+            <div class="carousel__nav" id="prev-lightbox">
+              < </div>
+                <img src="images/image-product-1.jpg" alt="image-1" class="carousel__image">
+                <img src="images/image-product-2.jpg" alt="image-2" class="carousel__image">
+                <img src="images/image-product-3.jpg" alt="image-3" class="carousel__image">
+                <img src="images/image-product-4.jpg" alt="image-4" class="carousel__image">
+                <div class="carousel__nav" id="next-lightbox">></div>
+            </div>
+            <div class="carousel__list">
+              <div class="carousel__thumbnails">
+                <img src="images/image-product-1-thumbnail.jpg" alt="image-1"
+                  class="carousel__thumbnail carousel__thumbnail--active">
+                <img src="images/image-product-2-thumbnail.jpg" alt="image-2" class="carousel__thumbnail">
+                <img src="images/image-product-3-thumbnail.jpg" alt="image-3" class="carousel__thumbnail">
+                <img src="images/image-product-4-thumbnail.jpg" alt="image-4" class="carousel__thumbnail">
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="carousel">
+          <div class="carousel__nav" id="prev">
+            < </div>
+              <div class="carousel__slider">
+                <img src="images/image-product-1.jpg" alt="image-1" class="carousel__image">
+                <img src="images/image-product-2.jpg" alt="image-2" class="carousel__image">
+                <img src="images/image-product-3.jpg" alt="image-3" class="carousel__image">
+                <img src="images/image-product-4.jpg" alt="image-4" class="carousel__image">
+              </div>
+              <div class="carousel__nav" id="next">></div>
+              <div class="carousel__list">
+                <div class="carousel__thumbnails">
+                  <img src="images/image-product-1-thumbnail.jpg" alt="image-1"
+                    class="carousel__thumbnail carousel__thumbnail--active">
+                  <img src="images/image-product-2-thumbnail.jpg" alt="image-2" class="carousel__thumbnail">
+                  <img src="images/image-product-3-thumbnail.jpg" alt="image-3" class="carousel__thumbnail">
+                  <img src="images/image-product-4-thumbnail.jpg" alt="image-4" class="carousel__thumbnail">
+                </div>
+              </div>
+          </div>
+          <div class="container">
+            <h2>Sneaker Company</h2>
+            <h1>Fall Limited Edition Sneakers</h1>
+
+            <div class="container__product-info">
+              These low-profile sneakers are your perfect casual wear companion. Featuring a durable rubber outer sole,
+              they’ll withstand everything the weather can offer.
+            </div>
+            <div class="container__product-price">
+              <div class="container__discounted-price"></div>
+              <div class="container__discount">50%</div>
+              <div class="container__original-price"></div>
+            </div>
+            <div class="container__add-products">
+              <div class="container__product-cart">
+                <div class="container__cart-btns" id="less">&#8211;</div>
+                <div class="container__amount">0</div>
+                <div class="container__cart-btns" id="more">+</div>
+              </div>
+              <button class="btn container__btn">
+                <svg width="22" height="20" xmlns="http://www.w3.org/2000/svg">
+                  <path
+                    d="M20.925 3.641H3.863L3.61.816A.896.896 0 0 0 2.717 0H.897a.896.896 0 1 0 0 1.792h1l1.031 11.483c.073.828.52 1.726 1.291 2.336C2.83 17.385 4.099 20 6.359 20c1.875 0 3.197-1.87 2.554-3.642h4.905c-.642 1.77.677 3.642 2.555 3.642a2.72 2.72 0 0 0 2.717-2.717 2.72 2.72 0 0 0-2.717-2.717H6.365c-.681 0-1.274-.41-1.53-1.009l14.321-.842a.896.896 0 0 0 .817-.677l1.821-7.283a.897.897 0 0 0-.87-1.114ZM6.358 18.208a.926.926 0 0 1 0-1.85.926.926 0 0 1 0 1.85Zm10.015 0a.926.926 0 0 1 0-1.85.926.926 0 0 1 0 1.85Zm2.021-7.243-13.8.81-.57-6.341h15.753l-1.383 5.53Z"
+                    fill="white" fill-rule="nonzero" />
+                </svg>
+                Add to cart
+              </button>
+            </div>
+          </div>
+        </div>
+  </main>
+  <div class="attribution">
+    Challenge by <a href="https://www.frontendmentor.io?ref=challenge" target="_blank">Frontend Mentor</a>.
+    Coded by <a href="#">Your Name Here</a>.
+  </div>
+</body>
+
+</html>
