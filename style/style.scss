@@ -256,19 +256,25 @@ body {
 }
 /* lightbox */
 .carousel__lightbox-container {
-  width: 100%;
-  position: absolute;
   display: none;
-  justify-content: center;
-  top: -10px;
-  z-index: 100;
+
+  @include for-desktop-up() {
+    width: 100%;
+    position: absolute;
+    display: none;
+    justify-content: center;
+    top: -10px;
+    z-index: 100;
+  }
 
   &--active {
     display: flex;
   }
 }
 .carousel__lightbox {
-  width: 430px;
+  @include for-desktop-up() {
+    width: 430px;
+  }
 }
 
 /* buttons lightbox */
@@ -278,6 +284,7 @@ body {
   top: 38%;
   &:hover {
     color: orangered;
+    cursor: pointer;
   }
 }
 
@@ -303,16 +310,25 @@ body {
     height: 30%;
   }
 
+  &__image.lightbox {
+    pointer-events: none;
+  }
+  /* lightbox close button */
   &__close {
-    display: block;
-    font-family: Arial, Helvetica, sans-serif;
-    color: orangered;
-    width: 100%;
-    height: 30px;
-    text-align: right;
-    font-size: 1.3rem;
-    font-weight: bolder;
-    margin-bottom: 0.5rem;
+    display: none;
+
+    @include for-desktop-up() {
+      display: block;
+      font-family: Arial, Helvetica, sans-serif;
+      color: orangered;
+      width: 100%;
+      height: 30px;
+      text-align: right;
+      font-size: 1.3rem;
+      font-weight: bolder;
+      margin-bottom: 0.5rem;
+      cursor: pointer;
+    }
   }
 
   &__nav,

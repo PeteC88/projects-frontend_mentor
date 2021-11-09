@@ -156,6 +156,7 @@ let carousel = {
             document.body.style.overflow = 'auto';
             menu.menuHider.classList.remove("menu__hider--active");
             this.lightBoxContainer.classList.remove("carousel__lightbox-container--active");
+
         });
     }
 }
