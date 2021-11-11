@@ -6,6 +6,8 @@ let menu = {
     menuHider: document.querySelector(".menu__hider"),
     menuCartBtn: document.querySelector(".menu__cart svg"),
     cart: document.querySelector(".cart"),
+    /* Used classname because it returns an array and it can check if the class exist or not with his length */
+    cartActive: document.getElementsByClassName('cart--active'),
     cartContainer: document.querySelector(".cart__container"),
     cartContent: document.querySelector(".cart__content"),
     cartTotal: document.querySelector(".menu__cart-total"),
@@ -31,6 +33,12 @@ let menu = {
     menuCart() {
         this.menuCartBtn.addEventListener("click", () => {
             this.cart.classList.toggle("cart--active");
+            
+            if(this.cartActive.length > 0){
+                let toggleCart = this.toggleCart.bind(this);
+                 toggleCart();
+            }
+           
         });
     },
     cartEmpty() {
@@ -56,6 +64,14 @@ let menu = {
                 empty();
             }
         })
+    },
+    toggleCart(){
+        let body = document.querySelector("body");
+                body.addEventListener("click", (e)=>{
+                if(!this.cart.contains(e.target) && !this.menuCartBtn.contains(e.target)){
+                    this.cart.classList.remove("cart--active");
+                    }   
+                });
     }
 }
 
@@ -83,7 +99,6 @@ let carousel = {
                         this.translateX += 100;
                         this.carouselImg.forEach(img => {
                             img.style.transform = `translateX(${this.translateX}%)`;
-                            console.log(this.index)
                         });
                         this.index--;
                         this.carouselThumbnailsImg[this.index].classList.add("carousel__thumbnail--active");
@@ -97,7 +112,6 @@ let carousel = {
                             img.style.transform = `translateX(${this.translateX}%)`;
                             activeClass();
                         });
-                        console.log(this.index)
                         this.index++;
                     }
                 }
@@ -116,10 +130,7 @@ let carousel = {
                         this.index = i - 4;
                         this.translateX = this.index * -100;
                         img.style.transform = `translateX(${this.translateX}%)`;
-                        console.log("ok")
-                        console.log(this.translateX)
                         this.carouselThumbnailsImg[i - (this.carouselImg.length / 2)].classList.add("carousel__thumbnail--active");
-                        console.log(this.index)
                     } else {
                         this.index = i;
                         this.translateX = this.index * -100;
@@ -139,7 +150,6 @@ let carousel = {
     activeThumbnails() {
         this.carouselThumbnailsImg[this.index + 1].classList.add("carousel__thumbnail--active");
         this.carouselThumbnailsImg[this.index + 5].classList.add("carousel__thumbnail--active");
-        console.log(this.index + 5)
 
     },
     toggleLightbox() {
@@ -223,5 +233,6 @@ carousel.thumbnailSlider();
 carousel.toggleLightbox();
 menu.burger();
 menu.menuCart();
-menu.deleteCart()
+menu.deleteCart();
+/* menu.toggleCart(); */
 shopping.addToCart();
