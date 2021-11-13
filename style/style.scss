@@ -134,6 +134,7 @@ body {
       transform: translateY(-12px);
     }
 
+    /* animation burger menu button */
     &--active {
       background: transparent;
 
@@ -146,7 +147,7 @@ body {
       }
     }
   }
-
+  /* menu slider */
   &__slider {
     position: absolute;
     left: 0;
@@ -175,7 +176,7 @@ body {
       transform: translateX(0);
     }
   }
-
+  /* hider div when the menu mobile is opened */
   &__hider {
     display: none;
 
@@ -246,7 +247,7 @@ body {
       right: 170px;
     }
   }
-
+  /* cart button and active in the menu */
   &__cart {
     cursor: pointer;
   }
@@ -270,7 +271,7 @@ body {
       text-align: center;
     }
   }
-
+  /* image in the menu */
   &__thumbnail {
     display: flex;
     justify-content: center;
@@ -325,7 +326,7 @@ body {
   @include for-desktop-up() {
     width: 45%;
   }
-
+  /* hider div when the lightbox is actived */
   &-hider {
     display: none;
 
@@ -370,7 +371,7 @@ body {
   }
 }
 
-/* Carousel */
+/* Carousel -- include lightbox and the one when the lightbox is closed*/
 .carousel {
   width: 100%;
   display: flex;
@@ -489,7 +490,7 @@ body {
     }
   }
 }
-
+/* main content text */
 .container {
   padding: 2rem;
   font-family: Arial, Helvetica, sans-serif;
@@ -575,7 +576,7 @@ body {
       width: 60%;
     }
   }
-
+  /* buttons add remove items in the cart */
   #less,
   #more {
     color: rgb(255, 132, 0);
@@ -590,7 +591,7 @@ body {
   #more {
     padding-right: 1rem;
   }
-
+  /* logo in the button */
   & svg {
     /* padding: 0.4rem; */
     margin-right: 5px;

@@ -74,6 +74,10 @@ body a {
   padding: 1rem 0 0;
   z-index: 100;
   top: 0;
+  /* menu slider */
+  /* hider div when the menu mobile is opened */
+  /* cart button and active in the menu */
+  /* image in the menu */
 }
 
 @media (min-width: 860px) {
@@ -117,6 +121,7 @@ body a {
   border-radius: 6px;
   -webkit-transition: all 0.5s ease-in-out;
   transition: all 0.5s ease-in-out;
+  /* animation burger menu button */
 }
 
 .menu__burger::before, .menu__burger::after {
@@ -376,6 +381,7 @@ body a {
 }
 
 .carousel__lightbox {
+  /* hider div when the lightbox is actived */
   /*  @include for-larger-desktop-up(){
     width: 42%;
   } */
@@ -434,7 +440,7 @@ body a {
   }
 }
 
-/* Carousel */
+/* Carousel -- include lightbox and the one when the lightbox is closed*/
 .carousel {
   width: 100%;
   display: -webkit-box;
@@ -584,9 +590,12 @@ body a {
   }
 }
 
+/* main content text */
 .container {
   padding: 2rem;
   font-family: Arial, Helvetica, sans-serif;
+  /* buttons add remove items in the cart */
+  /* logo in the button */
 }
 
 @media (min-width: 860px) {
