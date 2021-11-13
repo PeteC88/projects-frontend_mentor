@@ -65,7 +65,10 @@ let menu = {
     toggleCart() {
         let body = document.querySelector("body");
         body.addEventListener("click", (e) => {
+            /* if the user click outside the cart, except for the menuCartBtn the class active will be removed
+            */
             if (!this.cart.contains(e.target) && !this.menuCartBtn.contains(e.target)) {
+                //if the target doesn't contain the class cart or the class menuCartBt the class on cart will be removed
                 this.cart.classList.remove("cart--active");
             }
         });
@@ -89,11 +92,13 @@ let carousel = {
     slider() {
         this.carouselBtns.forEach(carouselBtn => {
             carouselBtn.addEventListener("click", () => {
-                let activeClass = this.activeThumbnails.bind(this);
-                let removeClass = this.removeActiveThumbnails.bind(this);
+                let addThumbnailsClass = this.activeThumbnails.bind(this);
+                let removeThumbnailsClass = this.removeActiveThumbnails.bind(this);
                 if (carouselBtn.id === "prev" || carouselBtn.id === "prev-lightbox") {
                     if (this.index > 0) {
-                        removeClass()
+                        /* to remove the highlight on the thumbnails in the carousel */
+                        removeThumbnailsClass()
+                        /* to slide the images */
                         this.translateX += 100;
                         this.carouselImg.forEach(img => {
                             img.style.transform = `translateX(${this.translateX}%)`;
@@ -104,11 +109,11 @@ let carousel = {
                     }
                 } else {
                     if (this.index < (this.carouselImg.length / 2) - 1) {
-                        removeClass();
+                        removeThumbnailsClass();
                         this.translateX -= 100;
                         this.carouselImg.forEach(img => {
                             img.style.transform = `translateX(${this.translateX}%)`;
-                            activeClass();
+                            addThumbnailsClass();
                         });
                         this.index++;
                     }
@@ -119,16 +124,19 @@ let carousel = {
     thumbnailSlider() {
         for (let i = 0; i < this.carouselThumbnailsImg.length; i++) {
             this.carouselThumbnailsImg[i].addEventListener("click", () => {
+                /* this will remove the highlight in all the thumbnails*/
                 this.carouselThumbnailsImg.forEach(thumbnail => {
                     thumbnail.classList.remove("carousel__thumbnail--active");
                 });
 
                 this.carouselImg.forEach(img => {
                     if (!this.isLightBoxActive) {
+                        /* the carouselImg.length take in account the carousel and the lightbox that's why when the lightbox is closed it hqs to be divided by 2 */
                         this.index = i - (this.carouselImg.length / 2);
                         this.translateX = this.index * -100;
                         img.style.transform = `translateX(${this.translateX}%)`;
                         this.carouselThumbnailsImg[i].classList.add("carousel__thumbnail--active");
+                        /* only the clicked thumbnail will have the active status */
                         this.carouselThumbnailsImg[this.index].classList.add("carousel__thumbnail--active");
                     } else {
                         this.index = i;
@@ -222,6 +230,7 @@ let shopping = {
         });
     },
     totalAmount() {
+        /* sum all the items added to the cart and return the total value */
         const reducer = (previousValue, currentValue) => previousValue + currentValue;
         const sum = this.totalInTheCart.reduce(reducer);
         return sum;
@@ -234,5 +243,4 @@ carousel.toggleLightbox();
 menu.burger();
 menu.menuCart();
 menu.deleteCart();
-/* menu.toggleCart(); */
 shopping.addToCart();
