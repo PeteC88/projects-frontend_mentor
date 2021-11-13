@@ -1,6 +1,7 @@
 /* menu */
 let menu = {
     active: true,
+    menuBtn: document.querySelector(".menu__btn"),
     burgerBtn: document.querySelector(".menu__burger"),
     menuSlider: document.querySelector(".menu__slider"),
     menuHider: document.querySelector(".menu__hider"),
@@ -15,7 +16,7 @@ let menu = {
     emptyCart: document.querySelector(".cart__empty"),
     deleteCartBtn: document.querySelector(".cart__delete"),
     burger() {
-        this.burgerBtn.addEventListener("click", () => {
+        this.menuBtn.addEventListener("click", () => {
             this.active = !this.active;
             this.burgerBtn.classList.toggle("menu__burger--active");
 
@@ -23,22 +24,18 @@ let menu = {
 
             this.menuHider.classList.toggle("menu__hider--active");
 
-            if (!this.active) {
-                document.body.style.overflow = 'hidden';
-            } else {
-                document.body.style.overflow = 'auto';
-            }
+            document.querySelector(".body-container").classList.toggle("body-container__menu-hider--active");
         });
     },
     menuCart() {
         this.menuCartBtn.addEventListener("click", () => {
             this.cart.classList.toggle("cart--active");
-            
-            if(this.cartActive.length > 0){
+
+            if (this.cartActive.length > 0) {
                 let toggleCart = this.toggleCart.bind(this);
-                 toggleCart();
+                toggleCart();
             }
-           
+
         });
     },
     cartEmpty() {
@@ -65,13 +62,13 @@ let menu = {
             }
         })
     },
-    toggleCart(){
+    toggleCart() {
         let body = document.querySelector("body");
-                body.addEventListener("click", (e)=>{
-                if(!this.cart.contains(e.target) && !this.menuCartBtn.contains(e.target)){
-                    this.cart.classList.remove("cart--active");
-                    }   
-                });
+        body.addEventListener("click", (e) => {
+            if (!this.cart.contains(e.target) && !this.menuCartBtn.contains(e.target)) {
+                this.cart.classList.remove("cart--active");
+            }
+        });
     }
 }
 
@@ -84,6 +81,7 @@ let carousel = {
     carouselThumbnails: document.querySelectorAll(".carousel__thumbnails"),
     carouselThumbnailsImg: document.querySelectorAll(".carousel__thumbnails img"),
     lightBoxContainer: document.querySelector(".carousel__lightbox-container"),
+    lightboxHider: document.querySelector(".carousel__lightbox-hider"),
     closeLightBox: document.querySelector(".carousel__close"),
     translateX: 0,
     index: 0,
@@ -127,16 +125,18 @@ let carousel = {
 
                 this.carouselImg.forEach(img => {
                     if (!this.isLightBoxActive) {
-                        this.index = i - 4;
+                        this.index = i - (this.carouselImg.length / 2);
                         this.translateX = this.index * -100;
                         img.style.transform = `translateX(${this.translateX}%)`;
-                        this.carouselThumbnailsImg[i - (this.carouselImg.length / 2)].classList.add("carousel__thumbnail--active");
+                        this.carouselThumbnailsImg[i].classList.add("carousel__thumbnail--active");
+                        this.carouselThumbnailsImg[this.index].classList.add("carousel__thumbnail--active");
                     } else {
                         this.index = i;
                         this.translateX = this.index * -100;
                         img.style.transform = `translateX(${this.translateX}%)`;
-                        this.carouselThumbnailsImg[i].classList.add("carousel__thumbnail--active");
-                        this.carouselThumbnailsImg[i + (this.carouselImg.length / 2)].classList.add("carousel__thumbnail--active");
+                        this.activeThumbnails.bind(this);
+                        this.carouselThumbnailsImg[this.index].classList.add("carousel__thumbnail--active");
+                        this.carouselThumbnailsImg[this.index + (this.carouselImg.length / 2)].classList.add("carousel__thumbnail--active");
                     }
                 });
             });
@@ -148,23 +148,23 @@ let carousel = {
         });
     },
     activeThumbnails() {
-        this.carouselThumbnailsImg[this.index + 1].classList.add("carousel__thumbnail--active");
-        this.carouselThumbnailsImg[this.index + 5].classList.add("carousel__thumbnail--active");
+        this.carouselThumbnailsImg[this.index].classList.add("carousel__thumbnail--active");
+        this.carouselThumbnailsImg[this.index + (this.carouselImg.length / 2)].classList.add("carousel__thumbnail--active");
 
     },
     toggleLightbox() {
         this.carouselImg.forEach(img => {
             img.addEventListener("click", () => {
                 this.isLightBoxActive = true;
-                document.body.style.overflow = 'hidden';
-                menu.menuHider.classList.add("menu__hider--active");
+                document.body.classList.add("body-container__lightbox--active");
+                this.lightboxHider.classList.add("carousel__lightbox-hider--active");
                 this.lightBoxContainer.classList.add("carousel__lightbox-container--active");
             })
         });
         this.closeLightBox.addEventListener("click", () => {
             this.isLightBoxActive = false;
-            document.body.style.overflow = 'auto';
-            menu.menuHider.classList.remove("menu__hider--active");
+            document.body.classList.remove("body-container__lightbox--active");
+            this.lightboxHider.classList.remove("carousel__lightbox-hider--active");
             this.lightBoxContainer.classList.remove("carousel__lightbox-container--active");
 
         });
