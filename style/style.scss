@@ -1,7 +1,30 @@
-//Media queries
+//Fonts
+/* [Kumbh Sans] */
+@import url("https://fonts.googleapis.com/css2?family=Kumbh+Sans:wght@400;700&display=swap");
+
+//Media queries vars
 $desktop: 860px;
 $biggerScreens: 1300px;
 $ultaLarge: 1800px;
+
+//Colors
+$primaryColors: (
+  Orange: hsl(26, 100%, 55%),
+  PaleOrange: hsl(25, 100%, 94%),
+);
+
+/* map-get($primaryColors, Orange) 
+map-get($neutralColors, GrayisBlue)
+*/
+
+$neutralColors: (
+  VeryVarkBlue: hsl(220, 13%, 13%),
+  DarkGrayishBlue: hsl(219, 9%, 45%),
+  GrayisBlue: hsl(220, 14%, 75%),
+  LightGrayishBlue: hsl(223, 64%, 98%),
+  White: hsl(0, 0%, 100%),
+  BlackWithOpacity: hsla(0, 0%, 0%, 0.577),
+);
 
 /* Mixins media queries */
 @mixin for-desktop-up {
@@ -31,6 +54,7 @@ $ultaLarge: 1800px;
 }
 
 body {
+  font-family: "Kumbh Sans", sans-serif;
   & ul {
     list-style-type: none;
   }
@@ -43,7 +67,7 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
-  background-color: rgb(255, 132, 0);
+  background-color: map-get($primaryColors, Orange);
   color: white;
   box-shadow: none;
   border: none;
@@ -90,7 +114,7 @@ body {
     padding-bottom: 3.2rem; */
     height: 100px;
     padding-bottom: 1rem;
-    border-bottom: 2px solid gray;
+    border-bottom: 2px solid map-get($neutralColors, DarkGrayisBlue);
   }
 
   &__btn {
@@ -153,8 +177,12 @@ body {
     left: 0;
     top: 0;
     padding-top: 100px;
-    transition: all 0.3s ease-in-out;
+    /* transition: all 0.3s ease-in-out; */
     transform: translateX(-100%);
+
+    @include for-desktop-up() {
+      transition: none;
+    }
 
     &--active {
       width: 65%;
@@ -186,7 +214,7 @@ body {
       width: 100%;
       height: 100vh;
       top: 0;
-      background-color: rgba(0, 0, 0, 0.468);
+      background-color: map-get($neutralColors, BlackWithOpacity);
 
       @include for-desktop-up() {
         display: none;
@@ -219,13 +247,13 @@ body {
       padding-right: 0.5rem;
       padding-left: 0.5rem;
       font-size: 1.1rem;
-      color: gray;
+      color: map-get($neutralColors, DarkGrayisBlue);
       height: 57px;
     }
 
     &:hover {
       @include for-desktop-up() {
-        border-bottom: 3px solid orangered;
+        border-bottom: 3px solid map-get($primaryColors, Orange);
       }
     }
 
@@ -262,7 +290,7 @@ body {
       left: 8px;
       width: 20px;
       height: 10px;
-      background-color: rgb(255, 132, 0);
+      background-color: map-get($primaryColors, Orange);
       border-radius: 5px;
       color: white;
       font-family: Arial, Helvetica, sans-serif;
@@ -278,7 +306,7 @@ body {
     & img {
       margin-left: 1rem;
       width: 40px;
-      border: 1px solid orangered;
+      border: 1px solid map-get($primaryColors, Orange);
       border-radius: 100%;
       cursor: pointer;
     }
@@ -339,7 +367,7 @@ body {
         width: 200%;
         height: 100vh;
         top: -70px;
-        background-color: rgba(0, 0, 0, 0.468);
+        background-color: map-get($neutralColors, BlackWithOpacity);
         z-index: -10;
       }
     }
@@ -355,7 +383,7 @@ body {
   position: absolute;
   top: 38%;
   &:hover {
-    color: orangered;
+    color: map-get($primaryColors, Orange);
     cursor: pointer;
   }
 }
@@ -396,7 +424,7 @@ body {
     @include for-desktop-up() {
       display: block;
       font-family: Arial, Helvetica, sans-serif;
-      color: orangered;
+      color: map-get($primaryColors, Orange);
       width: 100%;
       height: 30px;
       text-align: right;
@@ -462,7 +490,7 @@ body {
     &--active,
     &:hover {
       opacity: 0.5;
-      border: 2px solid orangered;
+      border: 2px solid map-get($primaryColors, Orange);
     }
   }
 
@@ -500,7 +528,7 @@ body {
   }
 
   & h2 {
-    color: orangered;
+    color: map-get($primaryColors, Orange);
   }
 
   & h1 {
@@ -512,7 +540,7 @@ body {
 
   &__product-info {
     text-align: justify;
-    color: lightslategray;
+    color: map-get($neutralColors, GrayisBlue);
     padding-bottom: 2rem;
   }
 
@@ -537,11 +565,11 @@ body {
     align-items: center;
     height: 25px;
     margin-left: 1rem;
-    background-color: rgb(252, 213, 141);
+    background-color: map-get($primaryColors, PaleOrange);
     border-radius: 5px;
     padding: 0 4px;
     font-weight: bolder;
-    color: rgb(255, 132, 0);
+    color: map-get($primaryColors, Orange);
   }
 
   &__original-price {
@@ -607,9 +635,9 @@ body {
 
 .cart {
   display: none;
-  position: absolute;
+  position: fixed;
   background-color: white;
-  top: 68px;
+  top: 90px;
   width: 93%;
   height: 280px;
   margin-left: 0;
@@ -640,7 +668,7 @@ body {
     font-size: 1.3rem;
     width: 100%;
     height: 2.5rem;
-    border-bottom: 1px solid gray;
+    border-bottom: 1px solid map-get($neutralColors, DarkGrayisBlue);
   }
 
   &__content {
@@ -675,7 +703,7 @@ body {
     justify-content: center;
     align-items: center;
     height: 200px;
-    color: gray;
+    color: map-get($neutralColors, DarkGrayisBlue);
 
     &--active {
       display: none;
