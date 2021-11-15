@@ -103,9 +103,11 @@ let carousel = {
                         this.carouselImg.forEach(img => {
                             img.style.transform = `translateX(${this.translateX}%)`;
                         });
-                        this.index--;
-                        this.carouselThumbnailsImg[this.index].classList.add("carousel__thumbnail--active");
+                        /* index - 1 to active the last tumbnail */
+                        this.carouselThumbnailsImg[this.index -1].classList.add("carousel__thumbnail--active");
                         this.carouselThumbnailsImg[this.index + 4].classList.add("carousel__thumbnail--active");
+                        console.log(this.index);
+                        this.index--;
                     }
                 } else {
                     if (this.index < (this.carouselImg.length / 2) - 1) {
@@ -115,6 +117,7 @@ let carousel = {
                             img.style.transform = `translateX(${this.translateX}%)`;
                             addThumbnailsClass();
                         });
+                        console.log(this.index);
                         this.index++;
                     }
                 }
@@ -156,8 +159,8 @@ let carousel = {
         });
     },
     activeThumbnails() {
-        this.carouselThumbnailsImg[this.index].classList.add("carousel__thumbnail--active");
-        this.carouselThumbnailsImg[this.index + (this.carouselImg.length / 2)].classList.add("carousel__thumbnail--active");
+        this.carouselThumbnailsImg[this.index + 1].classList.add("carousel__thumbnail--active");
+        this.carouselThumbnailsImg[this.index + (this.carouselImg.length / 2) + 1].classList.add("carousel__thumbnail--active");
 
     },
     toggleLightbox() {
