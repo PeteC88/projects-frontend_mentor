@@ -336,7 +336,7 @@ body {
   display: none;
 
   @include for-desktop-up() {
-    width: 70%;
+    width: 60%;
     position: fixed;
     display: none;
     justify-content: center;
@@ -352,7 +352,7 @@ body {
 }
 .carousel__lightbox {
   @include for-desktop-up() {
-    width: 45%;
+    width: 46%;
   }
   /* hider div when the lightbox is actived */
   &-hider {
@@ -622,7 +622,7 @@ body {
   /* logo in the button */
   & svg {
     /* padding: 0.4rem; */
-    margin-right: 5px;
+    margin-right: 1rem;
   }
 
   &__btn {
