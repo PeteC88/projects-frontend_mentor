@@ -63,6 +63,11 @@ body {
   }
 }
 
+button{
+  border: none;
+  background-color: inherit;
+}
+
 .btn {
   display: flex;
   justify-content: center;
@@ -110,8 +115,6 @@ body {
   top: 0;
 
   @include for-desktop-up() {
-    /*     padding-top: 2rem;
-    padding-bottom: 3.2rem; */
     height: 100px;
     padding-bottom: 1rem;
     border-bottom: 2px solid map-get($neutralColors, DarkGrayisBlue);
@@ -121,7 +124,7 @@ body {
     display: flex;
     justify-content: center;
     width: 50px;
-    height: 50px;
+    height: 100%;
     cursor: pointer;
     transition: all 0.5s ease-in-out;
     z-index: 10;
@@ -141,6 +144,7 @@ body {
 
     &::before,
     &::after {
+      display: block;
       position: absolute;
       content: "";
       background-color: black;
@@ -278,6 +282,8 @@ body {
   /* cart button and active in the menu */
   &__cart {
     cursor: pointer;
+    border: none;
+    background-color: inherit;
   }
 
   &__cart-total {
@@ -303,6 +309,7 @@ body {
   &__thumbnail {
     display: flex;
     justify-content: center;
+
     & img {
       margin-left: 1rem;
       width: 40px;
@@ -480,11 +487,15 @@ body {
     justify-content: space-around;
     margin-top: 4px;
   }
+  &__thumbnails picture{
+    width: 20%;
 
+
+  }
   &__thumbnail,
   &__tmb-lightbox {
     border-radius: 10px;
-    width: 20%;
+    width: 100%;
     cursor: pointer;
 
     &--active,
@@ -502,9 +513,11 @@ body {
     overflow: hidden;
     margin-bottom: 0.8rem;
 
-    & img {
+    & picture, & img{
       min-width: 100%;
       width: 100%;
+    }
+    & img {
       transition: all 0.5s ease-in-out;
       transform: translateX(0);
       /* prevent click */
