@@ -5,7 +5,7 @@ let menu = {
     burgerBtn: document.querySelector(".menu__burger"),
     menuSlider: document.querySelector(".menu__slider"),
     menuHider: document.querySelector(".menu__hider"),
-    menuCartBtn: document.querySelector(".menu__cart svg"),
+    menuCartBtn: document.querySelector(".menu__cart"),
     cart: document.querySelector(".cart"),
     /* Used classname because it returns an array and it can check if the class exist or not with his length */
     cartActive: document.getElementsByClassName('cart--active'),
