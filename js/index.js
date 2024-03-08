@@ -1,6 +1,6 @@
 /* menu */
-let menu = {
-    active: true,
+let menu = {        
+    active: false,
     menuBtn: document.querySelector(".menu__btn"),
     burgerBtn: document.querySelector(".menu__burger"),
     menuSlider: document.querySelector(".menu__slider"),
@@ -18,13 +18,18 @@ let menu = {
     burger() {
         this.menuBtn.addEventListener("click", () => {
             this.active = !this.active;
+
+            if(this.active){
+                document.body.style.overflow = 'hidden';
+            }else{
+                document.body.style.overflow = 'auto';
+            }
+
             this.burgerBtn.classList.toggle("menu__burger--active");
 
             this.menuSlider.classList.toggle("menu__slider--active");
 
             this.menuHider.classList.toggle("menu__hider--active");
-
-            document.querySelector(".body-container").classList.toggle("body-container__menu-hider--active");
         });
     },
     menuCart() {
@@ -77,6 +82,27 @@ let menu = {
 
 
 /* Carousel */
+
+//Added keydown listener for keyboard navigation to add the click event to img with role= button
+let imgsRoleButton = document.querySelectorAll('div[role="button"], img[role="button"]');
+
+imgsRoleButton.forEach(imgRoleButton =>{
+    imgRoleButton.addEventListener('keydown', function(e) {
+        const keyD = e.key !== undefined ? e.key : e.keyCode;
+        // e.key && e.keycode have mixed support - keycode is deprecated but support is greater than e.key
+        // I tested within IE11, Firefox, Chrome, Edge (latest) & all had good support for e.key
+      
+          if ( (keyD === 'Enter' || keyD === 13) || (['Spacebar', ' '].indexOf(keyD) >= 0 || keyD === 32)) {
+          // In IE11 and lower, e.key will equal "Spacebar" instead of ' '
+      
+          // Default behavior is prevented to prevent the page to scroll when "space" is pressed
+          e.preventDefault();
+          this.click();
+        }
+      });
+})
+
+
 let carousel = {
     carouselBtns: document.querySelectorAll(".carousel__nav"),
     carouselSlider: document.querySelector(".carousel__slider"),
@@ -84,7 +110,6 @@ let carousel = {
     carouselThumbnails: document.querySelectorAll(".carousel__thumbnails"),
     carouselThumbnailsImg: document.querySelectorAll(".carousel__thumbnails img"),
     lightBoxContainer: document.querySelector(".carousel__lightbox-container"),
-    lightboxHider: document.querySelector(".carousel__lightbox-hider"),
     closeLightBox: document.querySelector(".carousel__close"),
     translateX: 0,
     index: 0,
@@ -164,18 +189,14 @@ let carousel = {
 
     },
     toggleLightbox() {
-        this.carouselImg.forEach(img => {
-            img.addEventListener("click", () => {
-                this.isLightBoxActive = true;
-                document.body.classList.add("body-container__lightbox--active");
-                this.lightboxHider.classList.add("carousel__lightbox-hider--active");
-                this.lightBoxContainer.classList.add("carousel__lightbox-container--active");
-            })
-        });
+        this.lightBoxContainer.showModal();
+        this.isLightBoxActive = true;
+        document.body.classList.add("body-container__lightbox--active");
+        this.lightBoxContainer.classList.add("carousel__lightbox-container--active");
         this.closeLightBox.addEventListener("click", () => {
+            this.lightBoxContainer.close();
             this.isLightBoxActive = false;
             document.body.classList.remove("body-container__lightbox--active");
-            this.lightboxHider.classList.remove("carousel__lightbox-hider--active");
             this.lightBoxContainer.classList.remove("carousel__lightbox-container--active");
 
         });
@@ -242,7 +263,6 @@ let shopping = {
 
 carousel.slider();
 carousel.thumbnailSlider();
-carousel.toggleLightbox();
 menu.burger();
 menu.menuCart();
 menu.deleteCart();
