@@ -27,6 +27,23 @@ button {
   background-color: inherit;
 }
 
+dialog:modal {
+  position: absolute;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  top: 0;
+  max-width: 100vw;
+  width: 100vw;
+  height: 100dvh;
+  border: none;
+  background: none;
+}
+
+dialog::backdrop {
+  background: hsla(0, 0%, 0%, 0.577);
+}
+
 .btn {
   display: flex;
   justify-content: center;
@@ -82,6 +99,9 @@ button {
     padding-bottom: 1rem;
     border-bottom: 2px solid;
   }
+}
+.menu__thumbnail {
+  z-index: -1;
 }
 .menu__btn {
   display: flex;
@@ -308,6 +328,9 @@ button {
 }
 
 .carousel__lightbox {
+  /*  @include for-ultra-larger-desktop-up(){
+     width: 30% ;
+   } */
   /* hider div when the lightbox is actived */
   /*  @include for-larger-desktop-up(){
     width: 42%;
@@ -315,7 +338,8 @@ button {
 }
 @media (min-width: 860px) {
   .carousel__lightbox {
-    width: 45%;
+    width: 30%;
+    position: relative;
   }
 }
 .carousel__lightbox-hider {
@@ -328,9 +352,8 @@ button {
   .carousel__lightbox-hider--active {
     display: block;
     position: absolute;
-    width: 200%;
+    width: 100%;
     height: 100vh;
-    top: -70px;
     background-color: hsla(0, 0%, 0%, 0.577);
     z-index: -10;
   }
@@ -340,7 +363,7 @@ button {
 #prev-lightbox,
 #next-lightbox {
   position: absolute;
-  top: 38%;
+  top: 40%;
 }
 #prev-lightbox:hover,
 #next-lightbox:hover {
@@ -349,16 +372,11 @@ button {
 }
 
 #prev-lightbox {
-  margin-left: -25px;
+  left: -25px;
 }
 
 #next-lightbox {
-  right: 25%;
-}
-@media (min-width: 1800px) {
-  #next-lightbox {
-    right: 25.5%;
-  }
+  right: -25px;
 }
 
 /* Carousel -- include lightbox and the one when the lightbox is closed*/
@@ -434,6 +452,7 @@ button {
 @media (min-width: 860px) {
   .carousel__list, .carousel__list-lightbox {
     display: flex;
+    justify-content: center;
     width: 100%;
   }
 }
@@ -453,6 +472,15 @@ button {
 .carousel__thumbnail--active, .carousel__thumbnail:hover, .carousel__tmb-lightbox--active, .carousel__tmb-lightbox:hover {
   opacity: 0.5;
   border: 2px solid hsl(26, 100%, 55%);
+}
+.carousel__slider {
+  pointer-events: none;
+}
+@media (min-width: 860px) {
+  .carousel__slider {
+    pointer-events: auto;
+    cursor: pointer;
+  }
 }
 .carousel__slider, .carousel__slider-lightbox {
   width: 100%;

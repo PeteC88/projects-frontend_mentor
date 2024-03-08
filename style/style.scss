@@ -68,6 +68,22 @@ button{
   background-color: inherit;
 }
 
+dialog:modal {
+  position: absolute;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  top: 0;
+  max-width: 100vw;
+  width: 100vw;
+  height: 100dvh;
+  border: none;
+  //background: hsla(0, 0%, 0%, 0.577);
+  background: none;
+}
+dialog::backdrop{
+  background: hsla(0, 0%, 0%, 0.577);
+}
 .btn {
   display: flex;
   justify-content: center;
@@ -118,6 +134,10 @@ button{
     height: 100px;
     padding-bottom: 1rem;
     border-bottom: 2px solid map-get($neutralColors, DarkGrayisBlue);
+  }
+  
+  &__thumbnail{
+    z-index: -1;
   }
 
   &__btn {
@@ -175,6 +195,7 @@ button{
       }
     }
   }
+
   /* menu slider */
   &__slider {
     position: absolute;
@@ -359,8 +380,13 @@ button{
 }
 .carousel__lightbox {
   @include for-desktop-up() {
-    width: 45%;
+    width: 30%;
+    position: relative;
   }
+
+ /*  @include for-ultra-larger-desktop-up(){
+    width: 30% ;
+  } */
   /* hider div when the lightbox is actived */
   &-hider {
     display: none;
@@ -371,9 +397,8 @@ button{
       @include for-desktop-up() {
         display: block;
         position: absolute;
-        width: 200%;
+        width: 100%;
         height: 100vh;
-        top: -70px;
         background-color: map-get($neutralColors, BlackWithOpacity);
         z-index: -10;
       }
@@ -388,7 +413,7 @@ button{
 #prev-lightbox,
 #next-lightbox {
   position: absolute;
-  top: 38%;
+  top: 40%;
   &:hover {
     color: map-get($primaryColors, Orange);
     cursor: pointer;
@@ -396,14 +421,11 @@ button{
 }
 
 #prev-lightbox {
-  margin-left: -25px;
+ left: -25px;
 }
 #next-lightbox {
-  right: 25%;
+  right: -25px;
 
-  @include for-ultra-larger-desktop-up() {
-    right: 25.5%;
-  }
 }
 
 /* Carousel -- include lightbox and the one when the lightbox is closed*/
@@ -478,7 +500,9 @@ button{
 
     @include for-desktop-up() {
       display: flex;
+      justify-content: center;
       width: 100%;
+
     }
   }
   &__thumbnails,
@@ -504,7 +528,13 @@ button{
       border: 2px solid map-get($primaryColors, Orange);
     }
   }
-
+  &__slider{
+    pointer-events: none;
+    @include for-desktop-up() {
+     pointer-events: auto;
+      cursor: pointer;
+    }
+  }
   &__slider,
   &__slider-lightbox {
     width: 100%;
